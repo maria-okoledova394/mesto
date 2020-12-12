@@ -1,0 +1,10 @@
+.footer__text {
+    color: #545454;
+    font-size: 18px;
+}
+
+@media screen and (max-width: 425px) {
+    .footer__text {
+        font-size: 14px;
+    }
+}

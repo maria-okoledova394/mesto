@@ -9,7 +9,7 @@
     grid-column-end: 3;
 }
 
-/*@media screen and (max-width: 772px) {
+@media screen and (max-width: 425px) {
     .profile__subtitle {
-        grid-column: span 2;
-}*/
+        font-size: 14px;
+}
