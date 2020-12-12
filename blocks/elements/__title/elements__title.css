@@ -1,9 +1,10 @@
 .elements__title {
-
    display: inline-block;
    margin-bottom: 0;
    font-size: 24px;
    margin-top: 0;
-   
+   text-overflow: ellipsis;
+   white-space: nowrap;
+   overflow: hidden;
    width: 199px;
 }
