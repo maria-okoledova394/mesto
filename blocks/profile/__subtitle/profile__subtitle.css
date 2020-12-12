@@ -5,4 +5,11 @@
     line-height: 122%;
     margin: 0;
     order: 1;
+    grid-column-start: 1;
+    grid-column-end: 3;
 }
+
+/*@media screen and (max-width: 772px) {
+    .profile__subtitle {
+        grid-column: span 2;
+}*/
