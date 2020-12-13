@@ -1,5 +1,11 @@
 .profile__edit-button {
     margin: 0;
     order: 0;
+    background-image: url(../../../images/Edit\ Button.svg);
+    border: none;
+    outline: none;
+    height: 24px;
+    width: 24px;
+    background-color: transparent;
 }
 

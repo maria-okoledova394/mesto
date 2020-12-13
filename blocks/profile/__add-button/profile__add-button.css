@@ -4,6 +4,9 @@
     width: 150px;
     border: #FFFFFF;
     background-image: url(../../../images/Add\ Button.svg);
+    border: none;
+    outline: none;
+    background-color: transparent;
 }
 
 @media screen and (max-width: 772px) {

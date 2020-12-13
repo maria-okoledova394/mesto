@@ -22,9 +22,9 @@
             <div class="profile__info">
               <h1 class="profile__title">Жак-Ив Кусто</h1>
               <p class="profile__subtitle">Исследователь океана</p>
-              <img class="profile__edit-button" src="./images/Edit Button.svg">
+              <button class="profile__edit-button"></button>
             </div>
-          <div class="profile__add-button"></div> <!-- TODO: сделать из этого кнопку-->
+          <button class="profile__add-button"></button>
         </section>
 
         <section class="elements">
@@ -33,7 +33,8 @@
             <div class="elements__info">
             <div class="elements__row">
               <h2 class="elements__title">Карачаевск</h2>
-              <img src="./images/group.svg">
+              <button class="elements__like-button"></button>
+              <!--<img src="./images/group.svg">!-->
             </div>
             </div>
           </div>
@@ -83,13 +84,24 @@
             </div>
           </div>
         </section>
-
       </main>
 
       <footer class="footer">
         <p class="footer__text">&copy 2020 Mesto Russia</p>
       </footer>
     </div>
-</body>
 
+    <div class="popup">
+      <div class="popup__container">
+      <div class="popup__close-icon"></div>
+      <h1 class="popup__title">Редактировать профиль</h1>
+      <input class="popup__input popup__input_name" value="">
+      <hr class="popup__line">
+      <input class="popup__input popup__input_descriprion">
+      <hr class="popup__line">
+      <button class="popup__button-save">Сохранить</button>
+      </div>
+    </div>
+</body>
+<script src="./script.js"></script> 
 </html>
