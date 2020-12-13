@@ -6,6 +6,7 @@ let titleElement = document.querySelector('.profile__title');
 let popup = document.querySelector('.popup');
 let closeButtonElement = document.querySelector('.popup__close-icon');
 let saveButtonElement = document.querySelector('.popup__button-save');
+var likeButtons = document.querySelectorAll('.elements__like-button');
 
 function showPopup() {
     popup.classList.add('popup_opened');
@@ -13,14 +14,9 @@ function showPopup() {
     inputDescriprionElement.value = subtitleElement.textContent;
 }
 
-openButtonElement.addEventListener('click', showPopup); 
-
-
 function hidePopup() {
     popup.classList.remove('popup_opened');
 }
-
-closeButtonElement.addEventListener('click', hidePopup); 
 
 function saveInfo () {
     popup.classList.remove('popup_opened');
@@ -28,4 +24,15 @@ function saveInfo () {
     subtitleElement.textContent = inputDescriprionElement.value;
 }
 
+openButtonElement.addEventListener('click', showPopup); 
+
+closeButtonElement.addEventListener('click', hidePopup); 
+
 saveButtonElement.addEventListener('click', saveInfo); 
+
+for (var i = 0; i < likeButtons.length; i++) {
+    likeButtons[i].onclick = function(e) {
+    e.target.classList.toggle('elements__like-button_active');
+    e.target.classList.toggle('elements__like-button');
+  }
+}

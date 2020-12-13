@@ -9,3 +9,6 @@
     background-color: transparent;
 }
 
+.profile__edit-button:hover {
+    opacity: 60%;
+}

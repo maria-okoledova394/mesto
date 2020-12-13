@@ -1,8 +1,14 @@
 .elements__like-button {
-    background-image: url(../../../images/group.svg);
+    background-image: url(../../../images/like\ white.svg);
     border: none;
     outline: none;
-    height: 18.13px;
-    width: 20.76px;
+    height: 18px;
+    width: 20px;
     background-color: transparent;
 }
+
+
+
+/*.elements__like-button:active {
+    background-image: url(../../../images/like.svg);
+}*/
