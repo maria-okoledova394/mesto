@@ -32,7 +32,18 @@ saveButtonElement.addEventListener('click', saveInfo);
 
 for (var i = 0; i < likeButtons.length; i++) {
     likeButtons[i].onclick = function(e) {
-    e.target.classList.toggle('elements__like-button_active');
-    e.target.classList.toggle('elements__like-button');
+    e.target.classList.toggle('elements__like-button_status_active');
+    e.target.classList.toggle('elements__like-button_status_notactive');
   }
+}
+
+   document.onkeyup = function(e){
+    if(e){
+        var key = window.event ? e.keyCode : e.which;
+    }else{
+        var key = window.event ? event.keyCode : event.which;
+    }
+    if (key == '13') {
+        saveInfo();
+    }
 }
