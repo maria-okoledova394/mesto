@@ -9,7 +9,7 @@
     opacity: 100%;
     border-radius: 10px;
     position: relative;
-    font-family: 'Inter';
+    font-weight: 900;
 }
 
 @media screen and (max-width: 677px) {
