@@ -16,7 +16,7 @@ Cервис Mesto - интерактивная страница, куда мож
 * Flexbox
 
 **GitHub Pages**
-https://maria-okoledova394.github.io/russian-travel/
+https://maria-okoledova394.github.io/mesto/
 
 ### Планы по доработке проекта
 * Добавить анимацию
