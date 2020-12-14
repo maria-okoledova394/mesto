@@ -5,3 +5,9 @@
     outline-offset: 0;
     border-width: 0;
 }
+
+@media screen and (max-width: 677px) {
+    .popup__input {
+        width: 238px;
+    }
+}

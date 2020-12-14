@@ -10,19 +10,15 @@
     align-items: baseline;
 }
 
-/*@media screen and (max-width: 704px) {
-    .profile__info {
-        margin-left: auto;
-        margin-right: auto;
-    }
-}*/
-
 @media screen and (max-width: 773px) {
     .profile__info {
-        margin-top: 26px;
         grid-column-gap: 10px;
         grid-row-gap: 14px;
-        margin-left: auto;
-        margin-right: auto;
+    }
+}
+
+@media screen and (max-width: 677px) {
+    .profile__info {
+        margin-top: 26px;
     }
 }

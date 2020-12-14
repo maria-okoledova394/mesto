@@ -2,27 +2,24 @@
     margin-top: 40px;
     margin-left: auto;
     margin-right: auto;
-    width: 85.94%; /* не уверена, что нужно max */
+    width: 85.94%;
     max-width: 880px;
     min-height: 120px;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
     justify-content: space-between;
-    /*display: grid;
-    grid-template-columns: 120px minmax(max-content, 2fr) 150px;
-    grid-column-gap: 30px;
-    align-items: center;*/
 }
-
-@media screen and (max-width: 772px) {
+@media screen and (max-width: 1024px) {
     .profile {
+        width: 581px;
         justify-content: center;
     }
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 677px) {
     .profile {
-        width: 282px; /* мб надо сделать относительной? */
+        width: 282px; 
+        margin-top: 42px;
     }
 }

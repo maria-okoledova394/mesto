@@ -12,7 +12,7 @@
     overflow: hidden;
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 677px) {
     .profile__subtitle {
         font-size: 14px;
     }

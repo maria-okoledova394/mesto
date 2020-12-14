@@ -6,3 +6,9 @@
     margin-top: 13px;
     margin-bottom: 0;
 }
+
+@media screen and (max-width: 677px) {
+    .popup__line {
+        width: 238px;
+    }
+}
