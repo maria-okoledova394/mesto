@@ -4,7 +4,7 @@ let subtitleElement = document.querySelector('.profile__subtitle');
 let inputDescriprionElement = document.querySelector('.popup__input_descriprion');
 let titleElement = document.querySelector('.profile__title');
 let popup = document.querySelector('.popup');
-let closeButtonElement = document.querySelector('.popup__close-icon');
+let closeButtonElement = document.querySelector('.popup__close-button');
 let saveButtonElement = document.querySelector('.popup__button-save');
 
 function showPopup() {

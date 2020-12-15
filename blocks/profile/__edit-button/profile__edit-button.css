@@ -7,8 +7,16 @@
     height: 24px;
     width: 24px;
     background-color: transparent;
+    background-size: cover;
 }
 
 .profile__edit-button:hover {
     opacity: 60%;
+}
+
+@media screen and (max-width: 677px) {
+    .profile__edit-button {
+        height: 18px;
+        width: 18px;
+    }
 }
