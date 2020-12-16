@@ -1,5 +1,10 @@
 .elements__info {
+    padding: 25px 21px 25px 21px;
     background-color: white;
-    min-height: 79px;
+    min-height: 23px;
     border-radius: 0 0 10px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    line-height: normal;
 }
