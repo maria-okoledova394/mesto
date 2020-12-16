@@ -2,7 +2,7 @@
     margin-left: auto;
     height: 50px;
     width: 150px;
-    background-image: url(../../../images/add-button-small.svg);
+    background-image: url(../../../images/add-button-small.png);
     border: none;
     outline: none;
     background-color: transparent;
@@ -19,6 +19,6 @@
         margin-right: auto;
         margin-top: 36px;
         width: 282px;
-        background-image: url(../../../images/add-button-big.svg);
+        background-image: url(../../../images/add-button-big.png);
     }
 }
