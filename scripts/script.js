@@ -21,6 +21,7 @@ function handleFormSubmit (evt) {
     evt.preventDefault(); 
     titleElement.textContent = nameInput.value;
     subtitleElement.textContent = jobInput.value;
+    hidePopup();
 }
 
 formElement.addEventListener('submit', handleFormSubmit); 
