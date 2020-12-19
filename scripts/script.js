@@ -16,6 +16,7 @@ const formAdd = document.querySelector('.popup_function_add .popup__container');
 
 const imagePopup = document.querySelector('.image-popup');
 const imageInImagePopup = document.querySelector('.image-popup__image');
+const descriptionImagePopup = document.querySelector('.image-popup__subscription');
 
 
 const cardTemplate = document.querySelector('#elements__element').content;
@@ -81,6 +82,7 @@ function showImagePopup(event) {
     event.preventDefault(); // повторяющаяся строчка кода
     const imageElement = event.target;
     imageInImagePopup.src = imageElement.src;
+    descriptionImagePopup.textContent = event.target.nextElementSibling.textContent;
     imagePopup.classList.add('image-popup_opened');
 }
 
