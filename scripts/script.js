@@ -17,6 +17,7 @@ const formAdd = document.querySelector('.popup_function_add .popup__container');
 const imagePopup = document.querySelector('.image-popup');
 const imageInImagePopup = document.querySelector('.image-popup__image');
 const descriptionImagePopup = document.querySelector('.image-popup__subscription');
+const closeButtonImagePopup = document.querySelector('.image-popup__close-button');
 
 
 const cardTemplate = document.querySelector('#elements__element').content;
@@ -79,11 +80,15 @@ function hidePopupAdd() {
 }
 
 function showImagePopup(event) {
-    event.preventDefault(); // повторяющаяся строчка кода
+    event.preventDefault();
     const imageElement = event.target;
     imageInImagePopup.src = imageElement.src;
     descriptionImagePopup.textContent = event.target.nextElementSibling.textContent;
     imagePopup.classList.add('image-popup_opened');
+}
+
+function hideImagePopup() {
+    imagePopup.classList.remove('image-popup_opened');
 }
 
 function addCard(imageUrl, title) {
@@ -116,3 +121,5 @@ closeButtonEdit.addEventListener('click', hidePopupEdit);
 formAdd.addEventListener('submit', handleFormSubmitAdd); 
 openButtonAdd.addEventListener('click', showPopupAdd); 
 closeButtonAdd.addEventListener('click', hidePopupAdd);
+
+closeButtonImagePopup.addEventListener('click', hideImagePopup);
