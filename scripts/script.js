@@ -87,6 +87,11 @@ function showImagePopup(event) {
     imagePopup.classList.add('image-popup_opened');
 }
 
+//function clickLike() {
+ //   likeButton.classList.toggle('elements__like-button_status_active');
+  // likeButton.classList.toggle('elements__like-button_status_notactive');
+//};
+
 function hideImagePopup() {
     imagePopup.classList.remove('image-popup_opened');
 }
@@ -99,7 +104,13 @@ function addCard(imageUrl, title) {
     image.src = imageUrl;
     image.addEventListener('click', showImagePopup);
 
-    cards.prepend(cardElement);  
+    const likeButton = cardElement.querySelector('.elements__like-button');
+    likeButton.addEventListener('click', function () {
+        likeButton.classList.toggle('elements__like-button_status_active');
+        likeButton.classList.toggle('elements__like-button_status_notactive');
+    });
+
+    cards.prepend(cardElement); 
 }
 
 function handleFormSubmitAdd (evt) {
