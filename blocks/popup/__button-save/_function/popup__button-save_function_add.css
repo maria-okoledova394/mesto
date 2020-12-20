@@ -1,0 +1,7 @@
+@media screen and (max-width: 677px) {
+    .popup__button-save_function_add {
+        width: 200px;
+        height: 40px;
+        margin-top: 36px;
+    }
+}

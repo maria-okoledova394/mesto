@@ -1,0 +1,10 @@
+.popup__container_function_add {
+    width: 430px;
+}
+
+@media screen and (max-width: 677px) {
+    .popup__container_function_add {
+        width: 240px;
+        /*padding-top: 30px;*/
+    }
+}

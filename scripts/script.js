@@ -20,7 +20,7 @@ const descriptionImagePopup = document.querySelector('.image-popup__subscription
 const closeButtonImagePopup = document.querySelector('.image-popup__close-button');
 
 
-const cardTemplate = document.querySelector('#elements__element').content;
+const cardTemplate = document.querySelector('#elements').content;
 const cards = document.querySelector('.elements');
 
 const initialCards = [

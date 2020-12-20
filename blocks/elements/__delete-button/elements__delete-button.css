@@ -11,6 +11,6 @@
     background-color: transparent;
     }
     
-.elements__delete-button-button:hover {
+.elements__delete-button:hover {
     opacity: 60%;
 }

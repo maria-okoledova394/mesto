@@ -27,18 +27,16 @@
           <button class="profile__add-button" type="button"></button>
         </section>
 
-        <section class="elements">
-          <template id="elements__element">
-            <div class="elements__element">
-              <img class="elements__image" alt="Фотография места">
-              <div class="elements__info">
-                <h2 class="elements__title"></h2>
-                <button class="elements__like-button elements__like-button_status_notactive" type="button"></button>
-                <button class="elements__delete-button" type="button"></button>
-              </div>
+        <template id="elements" class="elements">
+          <div class="elements__element">
+            <img class="elements__image" alt="Фотография места" src="#">
+            <div class="elements__info">
+              <h2 class="elements__title"></h2>
+              <button class="elements__like-button elements__like-button_status_notactive" type="button"></button>
+              <button class="elements__delete-button" type="button"></button>
             </div>
-          </template>
-        </section>
+          </div>
+        </template>
 
       </main>
 
@@ -47,28 +45,28 @@
       </footer>
 
       <div class="popup popup_function_edit">
-        <form class="popup__container" name="profile__info">
+        <form class="popup__container popup__container_function_edit" name="profile__info">
           <button class="popup__close-button" type="button"></button>
-          <h2 class="popup__title">Редактировать профиль</h2>
-          <input class="popup__input popup__input_content_name" name="name">
-          <input class="popup__input popup__input_content_job" name="job">
-          <button class="popup__button-save" type="submit">Сохранить</button>
+          <h2 class="popup__title popup__title_function_edit">Редактировать профиль</h2>
+          <input class="popup__input popup__input_content_name popup__input_function_edit" name="name">
+          <input class="popup__input popup__input_content_job popup__input_function_edit" name="job">
+          <button class="popup__button-save popup__button-save_function_edit" type="submit">Сохранить</button>
         </form>
       </div>
 
       <div class="popup popup_function_add">
-        <form class="popup__container" name="profile__info">
+        <form class="popup__container popup__container_function_add" name="profile__info">
           <button class="popup__close-button" type="button"></button>
-          <h2 class="popup__title">Новое место</h2>
-          <input class="popup__input popup__input_content_place" name="place">
-          <input class="popup__input popup__input_content_picture" name="image_url">
-          <button class="popup__button-save" type="submit">Сохранить</button>
+          <h2 class="popup__title popup__title_function_add">Новое место</h2>
+          <input class="popup__input popup__input_content_place popup__input_function_add" name="place">
+          <input class="popup__input popup__input_content_picture popup__input_function_add" name="image_url">
+          <button class="popup__button-save popup__button-save_function_add" type="submit">Сохранить</button>
         </form>
       </div>
 
       <div class="image-popup">
         <div class="image-popup__container">
-          <img class="image-popup__image" alt="Увеличенная фотография места">
+          <img class="image-popup__image" alt="Увеличенная фотография места" src="#">
           <p class="image-popup__subscription"></p>
           <button class="image-popup__close-button" type="button"></button>
         </div>

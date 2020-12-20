@@ -1,0 +1,7 @@
+@media screen and (max-width: 677px) {
+    .popup__input_function_edit {
+        width: 238px;
+        font-size: 14px;
+        margin-top: 20px;
+    }
+}

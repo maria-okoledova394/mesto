@@ -1,0 +1,7 @@
+@media screen and (max-width: 677px) {
+    .popup__title_function_add {
+        width: 200px;
+        margin-bottom: 16px;
+        margin-top: 30px;
+    }
+}
