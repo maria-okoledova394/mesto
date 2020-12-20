@@ -110,8 +110,14 @@ function addCard(imageUrl, title) {
         likeButton.classList.toggle('elements__like-button_status_notactive');
     });
 
+    const deleteButton = cardElement.querySelector('.elements__delete-button');
+    deleteButton.addEventListener('click', function () {
+        const cardToDelete = deleteButton.closest('.elements__element');
+        cardToDelete.remove();
+    });
+
     cards.prepend(cardElement); 
-}
+} 
 
 function handleFormSubmitAdd (evt) {
     evt.preventDefault(); 
