@@ -14,10 +14,10 @@ const placeInputAdd = document.querySelector('.popup_function_add .popup__input_
 const imageUrlInputAdd = document.querySelector('.popup_function_add .popup__input_content_picture');
 const formAdd = document.querySelector('.popup_function_add .popup__container');
 
-const imagePopup = document.querySelector('.image-popup');
-const imageInImagePopup = document.querySelector('.image-popup__image');
-const descriptionImagePopup = document.querySelector('.image-popup__subscription');
-const closeButtonImagePopup = document.querySelector('.image-popup__close-button');
+const imagePopup = document.querySelector('.popup_function_open-image');
+const imageInImagePopup = document.querySelector('.popup__image');
+const descriptionImagePopup = document.querySelector('.popup__subscription');
+const closeButtonImagePopup = document.querySelector('.popup_function_open-image .popup__close-button');
 
 
 const cardTemplate = document.querySelector('#elements').content;
@@ -71,8 +71,8 @@ function handleFormSubmitEdit (evt) {
 // For add popup
 function showPopupAdd() {
     popupAdd.classList.add('popup_opened');
-    placeInputAdd.value = 'Название';
-    imageUrlInputAdd.value = 'Ссылка на картинку';
+    placeInputAdd.placeholder = 'Название';
+    imageUrlInputAdd.placeholder = 'Ссылка на картинку';
 }
 
 function hidePopupAdd() {
@@ -84,16 +84,11 @@ function showImagePopup(event) {
     const imageElement = event.target;
     imageInImagePopup.src = imageElement.src;
     descriptionImagePopup.textContent = event.target.nextElementSibling.textContent;
-    imagePopup.classList.add('image-popup_opened');
+    imagePopup.classList.add('popup_opened');
 }
 
-//function clickLike() {
- //   likeButton.classList.toggle('elements__like-button_status_active');
-  // likeButton.classList.toggle('elements__like-button_status_notactive');
-//};
-
 function hideImagePopup() {
-    imagePopup.classList.remove('image-popup_opened');
+    imagePopup.classList.remove('popup_opened');
 }
 
 function addCard(imageUrl, title) {
