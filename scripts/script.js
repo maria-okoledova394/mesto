@@ -50,54 +50,30 @@ const initialCards = [
     }
 ];
 
-// For edit popup
-function showPopupEdit() {
-    popupEdit.classList.add('popup_opened');
-    nameInputEdit.value = title.textContent;
-    jobInputEdit.value = subtitle.textContent;
+function showPopup(popup) {
+    popup.classList.add('popup_opened');
 }
 
-function hidePopupEdit() {
-    popupEdit.classList.remove('popup_opened');
+function hidePopup(popup) {
+    popup.classList.remove('popup_opened');
 }
 
-function handleFormSubmitEdit (evt) {
-    evt.preventDefault(); 
-    title.textContent = nameInputEdit.value;
-    subtitle.textContent = jobInputEdit.value;
-    hidePopupEdit();
-}
-
-// For add popup
-function showPopupAdd() {
-    popupAdd.classList.add('popup_opened');
-    placeInputAdd.placeholder = 'Название';
-    imageUrlInputAdd.placeholder = 'Ссылка на картинку';
-}
-
-function hidePopupAdd() {
-    popupAdd.classList.remove('popup_opened');
-}
-
-function showImagePopup(event) {
-    event.preventDefault();
-    const imageElement = event.target;
-    imageInImagePopup.src = imageElement.src;
-    descriptionImagePopup.textContent = event.target.nextElementSibling.textContent;
-    imagePopup.classList.add('popup_opened');
-}
-
-function hideImagePopup() {
-    imagePopup.classList.remove('popup_opened');
-}
-
-function addCard(imageUrl, title) {
+function createCard(name, link) { 
+    //создается DOM элемент карточки 
     const cardElement = cardTemplate.cloneNode(true);
-    cardElement.querySelector('.elements__title').textContent = title;
+
+    //в карточку вставляются данные и навешиваются обработчики 
+    cardElement.querySelector('.elements__title').textContent = name; 
 
     const image = cardElement.querySelector('.elements__image');
-    image.src = imageUrl;
-    image.addEventListener('click', showImagePopup);
+    image.src = link;
+    image.alt = name;
+    image.addEventListener('click', function() {
+        const imageElement = event.target;
+        imageInImagePopup.src = imageElement.src;
+        descriptionImagePopup.textContent = event.target.nextElementSibling.textContent;
+        showPopup(imagePopup);
+    });
 
     const likeButton = cardElement.querySelector('.elements__like-button');
     likeButton.addEventListener('click', function () {
@@ -109,29 +85,58 @@ function addCard(imageUrl, title) {
     deleteButton.addEventListener('click', function () {
         const cardToDelete = deleteButton.closest('.elements__element');
         cardToDelete.remove();
-    });
-
-    cards.prepend(cardElement); 
+    }); 
+    //возвращается созданная карточка 
+    return cardElement; 
 } 
 
-function handleFormSubmitAdd (evt) {
-    evt.preventDefault(); 
-    addCard(imageUrlInputAdd.value, placeInputAdd.value);
-    hidePopupAdd();
+function addCard(container, cardElement) {
+    container.prepend(cardElement); //cardElement добавляется в container 
 }
 
 initialCards.forEach(function (el) {
-    addCard(el.link, el.name);
+    addCard(cards, createCard(el.name, el.link));
 });
+
+function handleFormSubmitEdit (evt) {
+    evt.preventDefault(); 
+    title.textContent = nameInputEdit.value;
+    subtitle.textContent = jobInputEdit.value;
+    hidePopup(popupEdit);
+}
+
+function handleFormSubmitAdd (evt) {
+    evt.preventDefault();
+    addCard(cards, createCard(placeInputAdd.value, imageUrlInputAdd.value));
+    hidePopup(popupAdd);
+}
 
 // --------------------
 
 formEdit.addEventListener('submit', handleFormSubmitEdit); 
-openButtonEdit.addEventListener('click', showPopupEdit); 
-closeButtonEdit.addEventListener('click', hidePopupEdit);
 
-formAdd.addEventListener('submit', handleFormSubmitAdd); 
-openButtonAdd.addEventListener('click', showPopupAdd); 
-closeButtonAdd.addEventListener('click', hidePopupAdd);
+openButtonEdit.addEventListener('click', function () {
+    showPopup(popupEdit);
+    nameInputEdit.value = title.textContent;
+    jobInputEdit.value = subtitle.textContent;
+});
 
-closeButtonImagePopup.addEventListener('click', hideImagePopup);
+closeButtonEdit.addEventListener('click', function () {
+    hidePopup(popupEdit);
+});
+
+formAdd.addEventListener('submit', handleFormSubmitAdd);
+
+openButtonAdd.addEventListener('click', function () {
+    showPopup(popupAdd);
+    placeInputAdd.placeholder = 'Название';
+    imageUrlInputAdd.placeholder = 'Ссылка на картинку';
+}); 
+
+closeButtonAdd.addEventListener('click', function () {
+    hidePopup(popupAdd);
+});
+
+closeButtonImagePopup.addEventListener('click', function () {
+    hidePopup(imagePopup);
+});
