@@ -72,6 +72,7 @@ function createCard(name, link) {
         const imageElement = event.target;
         imageInImagePopup.src = imageElement.src;
         descriptionImagePopup.textContent = event.target.nextElementSibling.textContent;
+        imageInImagePopup.alt = descriptionImagePopup.textContent;
         showPopup(imagePopup);
     });
 
@@ -109,6 +110,7 @@ function handleFormSubmitAdd (evt) {
     evt.preventDefault();
     addCard(cards, createCard(placeInputAdd.value, imageUrlInputAdd.value));
     hidePopup(popupAdd);
+    document.querySelector('.popup__container_function_add').reset();
 }
 
 // --------------------
