@@ -79,7 +79,7 @@ function createCard(name, link) {
     const likeButton = cardElement.querySelector('.elements__like-button');
     likeButton.addEventListener('click', function () {
         likeButton.classList.toggle('elements__like-button_status_active');
-        likeButton.classList.toggle('elements__like-button_status_notactive');
+        //likeButton.classList.toggle('elements__like-button_status_notactive');
     });
 
     const deleteButton = cardElement.querySelector('.elements__delete-button');
