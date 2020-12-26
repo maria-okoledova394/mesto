@@ -68,7 +68,7 @@ function createCard(name, link) {
     const image = cardElement.querySelector('.elements__image');
     image.src = link;
     image.alt = name;
-    image.addEventListener('click', function() {
+    image.addEventListener('click', function(event) {
         const imageElement = event.target;
         imageInImagePopup.src = imageElement.src;
         descriptionImagePopup.textContent = event.target.nextElementSibling.textContent;
