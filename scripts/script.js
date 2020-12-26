@@ -160,6 +160,15 @@ imagePopup.addEventListener('click', function (event) {
     }
 });
 
+document.addEventListener('keydown', function(event) {
+    const key = event.key;
+    if (key === "Escape") {
+        hidePopup(popupEdit);
+        hidePopup(popupAdd);
+        hidePopup(imagePopup);
+    }
+});
+
 //-------VALIDATION---------------------------------------------
 
 const hasInvalidInput = (inputList) => {
