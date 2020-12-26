@@ -139,3 +139,43 @@ closeButtonAdd.addEventListener('click', function () {
 closeButtonImagePopup.addEventListener('click', function () {
     hidePopup(imagePopup);
 });
+
+
+//-------VALIDATION---------------------------------------------
+
+const showInputError = (formElement, inputElement, errorMessage) => {
+    const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+    inputElement.classList.add('form__input_type_error');
+    errorElement.textContent = errorMessage;
+    errorElement.classList.add('form__input-error_active');
+  };
+
+const checkInputValidity = (formElement, inputElement) => {
+  if (!inputElement.validity.valid) {
+    showInputError(formElement, inputElement, inputElement.validationMessage);
+  } else {
+    hideInputError(formElement, inputElement);
+  }
+};
+
+const setEventListeners = (formElement) => {
+    const inputList = Array.from(formElement.querySelectorAll('.form__input'));
+    const buttonElement = formElement.querySelector('.form__submit');
+    toggleButtonState(inputList, buttonElement);
+    inputList.forEach((inputElement) => {
+      inputElement.addEventListener('input', function () {
+        toggleButtonState(inputList, buttonElement);
+        checkInputValidity(formElement, inputElement);
+      });
+    });
+};
+
+const enableValidation = () => {
+    const formList = Array.from(document.querySelectorAll('.form'));
+    formList.forEach((formElement) => {
+      formElement.addEventListener('submit', function (evt) {
+        evt.preventDefault();
+      });
+      setEventListeners(formElement); //TODO: проверить, в нужное ли место добавила
+    });
+};

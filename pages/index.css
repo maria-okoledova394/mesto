@@ -52,3 +52,7 @@
 @import url(../blocks/popup/__button-save/_function/popup__button-save_function_edit.css);
 @import url(../blocks/popup/__image/popup__image.css);
 @import url(../blocks/popup/__subscription/popup__subscription.css);
+
+@import url(../blocks/form/__input/_type/form__input_type_error.css);
+@import url(../blocks/form/__input-error/form__input-error.css);
+@import url(../blocks/form/__input-error/_active/form__input-error_active.css);
