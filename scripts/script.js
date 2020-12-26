@@ -23,6 +23,8 @@ const closeButtonImagePopup = document.querySelector('.popup_function_open-image
 const cardTemplate = document.querySelector('#elements').content;
 const cards = document.querySelector('.elements');
 
+const popup = document.querySelector('.popup');
+
 const initialCards = [
     {
         name: 'Архыз',
@@ -140,6 +142,23 @@ closeButtonImagePopup.addEventListener('click', function () {
     hidePopup(imagePopup);
 });
 
+popupEdit.addEventListener('click', function (event) {
+    if (event.target === popupEdit) {
+        hidePopup(popupEdit);
+    }
+});
+
+popupAdd.addEventListener('click', function (event) {
+    if (event.target === popupAdd) {
+        hidePopup(popupAdd);
+    }
+});
+
+imagePopup.addEventListener('click', function (event) {
+    if (event.target === imagePopup) {
+        hidePopup(imagePopup);
+    }
+});
 
 //-------VALIDATION---------------------------------------------
 
@@ -197,8 +216,9 @@ const enableValidation = () => {
       formElement.addEventListener('submit', function (evt) {
         evt.preventDefault();
       });
-      setEventListeners(formElement); //TODO: проверить, в нужное ли место добавила
+      setEventListeners(formElement); 
     });
 };
 
 enableValidation();
+
