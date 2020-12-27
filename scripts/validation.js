@@ -58,17 +58,6 @@ const enableValidation = (params) => {
     });
 };
 
-const setPopupEventListener = () => {
-    const popupList = Array.from(document.querySelectorAll('.popup'));
-    popupList.forEach((popupElement) => {
-        popupElement.addEventListener('click', function (event) {
-            if (event.target.classList.contains('popup')) { // to ignore clicks on popup content
-                hidePopup(event.target);
-            }
-        });
-    })
-}
-
 enableValidation({
     formSelector: '.popup__form',
     inputSelector: '.popup__input',
