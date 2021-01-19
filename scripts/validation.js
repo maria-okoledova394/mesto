@@ -1,3 +1,5 @@
+import { setPopupEventListener } from './script.js';
+
 const hasInvalidInput = (inputList) => {
     return inputList.some((inputElement) => {
       return !inputElement.validity.valid;
