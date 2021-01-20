@@ -1,4 +1,4 @@
-import { closePopup, hidePopup, showPopup } from './utils.js';
+import { hidePopup, showPopup } from './utils.js';
 
 const imagePopup = document.querySelector('.popup_function_open-image');
 const imageInImagePopup = document.querySelector('.popup__image');
@@ -6,12 +6,6 @@ const closeButtonImagePopup = document.querySelector('.popup_function_open-image
 const descriptionImagePopup = document.querySelector('.popup__subscription');
 
 export class Card {
-    /*constructor(data, cardSelector) {
-        this._link = data.link;
-        this._name = data.name;
-        this._cardSelector = cardSelector;
-    }*/
-
     constructor(name, link, cardSelector) {
         this._name = name;
         this._link = link;
@@ -51,9 +45,6 @@ export class Card {
     
     _handleClosePopup() {
         hidePopup(imagePopup);
-        //imageInImagePopup.src = '';
-        //imageInImagePopup.alt = '';
-        //descriptionImagePopup.textContent = '';
     }
 
     _deleteCard() {
