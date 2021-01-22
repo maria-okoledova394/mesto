@@ -8,6 +8,7 @@ export class FormValidator {
         this._inputErrorClass = data.inputErrorClass;
         this._errorClass = data.errorClass;
         this._formElement = formElement;
+        this._button = this._formElement.querySelector(this._submitButtonSelector);
     }
 
     _hasInValidInput(inputList) {
@@ -50,8 +51,6 @@ export class FormValidator {
     }
 
     _toggleButtonState(isNotValid) {
-        this._button = this._formElement.querySelector(this._submitButtonSelector);
-
         if (!isNotValid) {
             this._button.classList.remove(this._inactiveButtonClass);
             this._button.disabled = false;

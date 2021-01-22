@@ -20,6 +20,14 @@ const formAdd = document.querySelector('.popup_function_add .popup__container');
 
 const cards = document.querySelector('.elements');
 
+
+const imagePopup = document.querySelector('.popup_function_open-image');
+const imageInImagePopup = document.querySelector('.popup__image');
+const closeButtonImagePopup = document.querySelector('.popup_function_open-image .popup__close-button');
+const descriptionImagePopup = document.querySelector('.popup__subscription');
+
+export { imagePopup, imageInImagePopup, descriptionImagePopup };
+
 const initialCards = [
     {
         name: 'Архыз',
@@ -122,6 +130,10 @@ closeButtonEdit.addEventListener('click', function () {
 closeButtonAdd.addEventListener('click', function () {
     hidePopup(popupAdd);
 });
+
+closeButtonImagePopup.addEventListener('click', () => {
+    hidePopup(imagePopup);
+  }); 
 
 const setPopupEventListener = () => {
     const popupList = Array.from(document.querySelectorAll('.popup'));

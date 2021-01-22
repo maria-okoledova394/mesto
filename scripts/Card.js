@@ -1,16 +1,11 @@
 import { hidePopup, showPopup } from './utils.js';
-
-const imagePopup = document.querySelector('.popup_function_open-image');
-const imageInImagePopup = document.querySelector('.popup__image');
-const closeButtonImagePopup = document.querySelector('.popup_function_open-image .popup__close-button');
-const descriptionImagePopup = document.querySelector('.popup__subscription');
+import { imagePopup, imageInImagePopup, descriptionImagePopup } from './index.js';
 
 export class Card {
     constructor(name, link, cardSelector) {
         this._name = name;
         this._link = link;
         this._cardSelector = cardSelector;
-
     }
 
     _getTemplate() {
@@ -52,12 +47,13 @@ export class Card {
     }
     
     _setEventListeners() {
-        this._element.addEventListener('click', () => {
-          this._handleOpenPopup();
-        });
-    
-        closeButtonImagePopup.addEventListener('click', () => {
-          this._handleClosePopup();
+        this._element.addEventListener('click', (evt) => {
+            if (
+                evt.target != likeButton &&
+                evt.target != deleteButton
+            ) {
+                this._handleOpenPopup();
+            }
         });
 
         const likeButton = this._element.querySelector('.elements__like-button');
