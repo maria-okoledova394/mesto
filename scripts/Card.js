@@ -47,6 +47,9 @@ export class Card {
     }
     
     _setEventListeners() {
+        const likeButton = this._element.querySelector('.elements__like-button');
+        const deleteButton = this._element.querySelector('.elements__delete-button');
+
         this._element.addEventListener('click', (evt) => {
             if (
                 evt.target != likeButton &&
@@ -56,12 +59,10 @@ export class Card {
             }
         });
 
-        const likeButton = this._element.querySelector('.elements__like-button');
         likeButton.addEventListener('click', () => {
             likeButton.classList.toggle('elements__like-button_status_active');
         });
 
-        const deleteButton = this._element.querySelector('.elements__delete-button');
         deleteButton.addEventListener('click', () => {
             this._deleteCard();
         }); 
