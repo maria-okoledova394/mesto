@@ -1,6 +1,7 @@
 import { hidePopup, showPopup } from './utils.js';
 import { Card } from './Card.js';
 import { FormValidator } from './FormValidator.js';
+import Section from './Section.js';
 
 const openButtonEdit = document.querySelector('.profile__edit-button');
 const title = document.querySelector('.profile__title');
