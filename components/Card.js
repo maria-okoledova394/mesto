@@ -1,13 +1,24 @@
-import { hidePopup, showPopup } from '../utils/utils.js';
+//import { hidePopup, showPopup } from '../utils/utils.js';
 
-import { imagePopup, imageInImagePopup, descriptionImagePopup } from '../pages/index.js';
+//import { imagePopup, imageInImagePopup, descriptionImagePopup } from '../pages/index.js';
 
-export class Card {
-    constructor(name, link, cardSelector) {
+export default class Card {
+    constructor({ name, link }, cardSelector, handleCardClick) {
         this._name = name;
         this._link = link;
         this._cardSelector = cardSelector;
+        this._handleCardClick = handleCardClick;
     }
+
+   /* _getTemplate() {
+        const cardElement = document
+          .querySelector(this._cardSelector)
+          .content
+          .querySelector('.elements__element')
+          .cloneNode(true);
+    
+        return cardElement;
+    }*/
 
     _getTemplate() {
         const cardElement = document
@@ -31,17 +42,16 @@ export class Card {
       return this._element;
     }
 
-    _handleOpenPopup() {
+    /*_handleOpenPopup() {
         showPopup(imagePopup);
         imageInImagePopup.src = this._link;
         imageInImagePopup.alt = this._image.alt;
         descriptionImagePopup.textContent = this._name;
-        
-    }
+    }*/
     
-    _handleClosePopup() {
+    /*_handleClosePopup() {
         hidePopup(imagePopup);
-    }
+    }*/
 
     _deleteCard() {
         this._element.remove();
@@ -56,7 +66,7 @@ export class Card {
                 evt.target != likeButton &&
                 evt.target != deleteButton
             ) {
-                this._handleOpenPopup();
+                this._handleCardClick;//не надо ли скобки
             }
         });
 
