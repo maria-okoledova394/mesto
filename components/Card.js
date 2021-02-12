@@ -66,7 +66,7 @@ export default class Card {
                 evt.target != likeButton &&
                 evt.target != deleteButton
             ) {
-                this._handleCardClick;//не надо ли скобки
+                this._handleCardClick(this._name, this._link);
             }
         });
 

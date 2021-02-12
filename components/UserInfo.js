@@ -20,5 +20,6 @@ export default class UserInfo {
         //const jobInput = document.querySelector('.popup__input_content_job');
         this._nameValue = formData.name;
         this._descriptionValue = formData.job;
+        console.log(this._nameValue);
     }
 }
