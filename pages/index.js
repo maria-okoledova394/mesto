@@ -25,7 +25,6 @@ const cardList = new Section({
             const popupImage = new PopupWithImage('.popup_function_open-image', item);
             popupImage.open();
         });
-
         const cardElement = card.generateCard();
         cardList.addItem(cardElement);
     }
@@ -34,23 +33,22 @@ const cardList = new Section({
 cardList.renderItems();
 
 const popupEdit = new popupWithForm('.popup_function_edit', (formData) => {
-    //evt.preventDefault();
     const user = new UserInfo({ nameSelector: '.profile__title', descriptionSelector: '.profile__subtitle' });
     user.setUserInfo(formData);
     popupEdit.close();
 });
 
-popupEdit.setEventListeners();
+const popupAdd = new popupWithForm('.popup_function_add', (item) => {
 
-const popupAdd = new popupWithForm('.popup_function_add', (evt, formData) => {
-    evt.preventDefault();
-    const card = new Card(formData, '.elements', (name, link) => {
-        const poppImage = new PopupWithImage('.popup_function_open-image', formData)
-        //PopupWithImage.open(placeInputAdd, imageUrlInputAdd);
-        console.log('click on card');
+    const card = new Card(item, '.elements', () => {
+        const popupImage = new PopupWithImage('.popup_function_open-image', item);
+        popupImage.open();
     });
     const cardElement = card.generateCard();
+
+    
     cardList.addItem(cardElement);
+
     popupAdd.close();
     //popupAdd.reset();
 });
@@ -69,7 +67,7 @@ openButtonAdd.addEventListener('click', function () {
     popupAdd.open();
 }); 
 
-function setPopupEventListener(event) {
+function setPopupEventListener() {
     const popupFuncEdit = document.querySelector('.popup_function_edit');
     const popupFuncAdd = document.querySelector('.popup_function_add');
 
@@ -78,6 +76,7 @@ function setPopupEventListener(event) {
             popupEdit.close();
         }
     });
+
     popupFuncAdd.addEventListener('click', (event) => {
         if (event.target.classList.contains('popup')) { // to ignore clicks on popup content
             popupAdd.close();

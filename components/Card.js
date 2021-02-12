@@ -66,7 +66,8 @@ export default class Card {
                 evt.target != likeButton &&
                 evt.target != deleteButton
             ) {
-                this._handleCardClick(this._name, this._link);
+                //this._name, this._link
+                this._handleCardClick(evt);
             }
         });
 
