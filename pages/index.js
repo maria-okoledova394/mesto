@@ -24,6 +24,7 @@ const cardList = new Section({
         const card = new Card(item, '.elements', () => {
             const popupImage = new PopupWithImage('.popup_function_open-image', item);
             popupImage.open();
+            popupImage.setEventListeners();
         });
         const cardElement = card.generateCard();
         cardList.addItem(cardElement);
@@ -38,11 +39,14 @@ const popupEdit = new popupWithForm('.popup_function_edit', (formData) => {
     popupEdit.close();
 });
 
+popupEdit.setEventListeners();
+
 const popupAdd = new popupWithForm('.popup_function_add', (item) => {
 
     const card = new Card(item, '.elements', () => {
         const popupImage = new PopupWithImage('.popup_function_open-image', item);
         popupImage.open();
+        popupImage.setEventListeners();
     });
     const cardElement = card.generateCard();
 
@@ -53,6 +57,8 @@ const popupAdd = new popupWithForm('.popup_function_add', (item) => {
     //popupAdd.reset();
 });
 
+popupAdd.setEventListeners();
+
 openButtonEdit.addEventListener('click', function () {
     const nameInput = document.querySelector('.popup__input_content_name');
     const jobInput = document.querySelector('.popup__input_content_job');
@@ -60,11 +66,22 @@ openButtonEdit.addEventListener('click', function () {
     nameInput.value = user.getUserInfo().nameValue;
     jobInput.value = user.getUserInfo().descriptionValue;
 
+    var event = new Event('input', {});
+    nameInput.dispatchEvent(event);
+    jobInput.dispatchEvent(event);
+
     popupEdit.open();
 });
 
 openButtonAdd.addEventListener('click', function () {
     popupAdd.open();
+
+    const placeInput = document.querySelector('.popup__input_content_place'); //TODO: вынести переменнные
+    const linkInput = document.querySelector('.popup__input_content_picture');
+
+    var event = new Event('input', {});
+    placeInput.dispatchEvent(event);
+    linkInput.dispatchEvent(event);
 }); 
 
 function setPopupEventListener() {
