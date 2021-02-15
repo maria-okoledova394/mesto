@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="stylesheet" href="./pages/index.css">
+  <!--<link rel="stylesheet" href="./pages/index.css">-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- TODO: вспомнить, что это-->
   <title>Mesto</title>
   <base target="_blank">
@@ -18,7 +18,7 @@
       <main>
 
         <section class="profile">
-          <img class="profile__avatar" src="./images/avatar.jpeg" alt="Фотография Жак-Ив Кусто">
+          <img class="profile__avatar" src="<%=require('./images/avatar.jpeg')%>" alt="Фотография Жак-Ив Кусто">
           <div class="profile__info">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
             <p class="profile__subtitle">Исследователь океана</p>
@@ -87,6 +87,6 @@
       </div>
 
     </div>
-    <script type="module" src="./pages/index.js"></script>
+    <!--<script type="module" src="./pages/index.js"></script>-->
 </body>
 </html>
