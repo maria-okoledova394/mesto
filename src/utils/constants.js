@@ -38,6 +38,7 @@ export const openButtonEdit = document.querySelector('.profile__edit-button');
 export const openButtonAdd = document.querySelector('.profile__add-button');
 export const placeInputAdd = document.querySelector('.popup_function_add .popup__input_content_place');
 export const imageUrlInputAdd = document.querySelector('.popup_function_add .popup__input_content_picture');
+export const saveButtonAdd = document.querySelector('.popup__button-save_function_add');
 export const templateSelector = '.elements';
 export const popupEditSelector = '.popup_function_edit';
 export const popupAddSelector = '.popup_function_add';

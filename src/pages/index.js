@@ -16,6 +16,7 @@ import {
     popupEditSelector,
     popupAddSelector,
     popupImgSelector,
+    saveButtonAdd,
 } from '../utils/constants.js';
 
 const cardList = new Section({
@@ -73,14 +74,9 @@ openButtonEdit.addEventListener('click', function () {
 });
 
 openButtonAdd.addEventListener('click', function () {
+    saveButtonAdd.disabled = true;
+    saveButtonAdd.classList.add(enableValidationData.inactiveButtonClass);
     popupAdd.open();
-
-    const placeInput = document.querySelector('.popup__input_content_place');
-    const linkInput = document.querySelector('.popup__input_content_picture');
-
-    var event = new Event('input', {});
-    placeInput.dispatchEvent(event);
-    linkInput.dispatchEvent(event);
 }); 
 
 function setPopupEventListener() {

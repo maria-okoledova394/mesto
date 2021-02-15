@@ -33,12 +33,6 @@ export default class FormValidator {
         this._inputElement.classList.remove(this._inputErrorClass);
     }
 
-    _hasInvalidInput(inputElement) {
-        return inputList.some((inputElement) => {
-            return inputElement.validity.valid;
-        });
-    }
-
     _checkInputValidity(inputElement) {
         this._inputElement = inputElement;
 
