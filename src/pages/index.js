@@ -33,8 +33,9 @@ const cardList = new Section({
 
 cardList.renderItems();
 
+const user = new UserInfo({ nameSelector: '.profile__title', descriptionSelector: '.profile__subtitle' });
+
 const popupEdit = new popupWithForm(popupEditSelector, (formData) => {
-    const user = new UserInfo({ nameSelector: '.profile__title', descriptionSelector: '.profile__subtitle' });
     user.setUserInfo(formData);
     popupEdit.close();
 });
@@ -61,7 +62,6 @@ popupAdd.setEventListeners();
 openButtonEdit.addEventListener('click', function () {
     const nameInput = document.querySelector('.popup__input_content_name');
     const jobInput = document.querySelector('.popup__input_content_job');
-    const user = new UserInfo({ nameSelector: '.profile__title', descriptionSelector: '.profile__subtitle' });
     nameInput.value = user.getUserInfo().nameValue;
     jobInput.value = user.getUserInfo().descriptionValue;
 
