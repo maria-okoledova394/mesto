@@ -18,11 +18,12 @@ import {
     popupImgSelector,
 } from '../utils/constants.js';
 
+const popupImage = new PopupWithImage(popupImgSelector);
+
 const cardList = new Section({
     items: initialCards,
     renderer: (item) => {
         const card = new Card(item, templateSelector, () => {
-            const popupImage = new PopupWithImage(popupImgSelector);
             popupImage.open(item);
             popupImage.setEventListeners();
         });
@@ -44,8 +45,7 @@ popupEdit.setEventListeners();
 
 const popupAdd = new popupWithForm(popupAddSelector, (item) => {
 
-    const card = new Card(item, templateSelector, () => {
-        const popupImage = new PopupWithImage(popupImgSelector);
+    const card = new Card(item, templateSelector, () => { 
         popupImage.open(item);
         popupImage.setEventListeners();
     });
