@@ -22,8 +22,8 @@ const cardList = new Section({
     items: initialCards,
     renderer: (item) => {
         const card = new Card(item, templateSelector, () => {
-            const popupImage = new PopupWithImage(popupImgSelector, item);
-            popupImage.open();
+            const popupImage = new PopupWithImage(popupImgSelector);
+            popupImage.open(item);
             popupImage.setEventListeners();
         });
         const cardElement = card.generateCard();
@@ -45,8 +45,8 @@ popupEdit.setEventListeners();
 const popupAdd = new popupWithForm(popupAddSelector, (item) => {
 
     const card = new Card(item, templateSelector, () => {
-        const popupImage = new PopupWithImage(popupImgSelector, item);
-        popupImage.open();
+        const popupImage = new PopupWithImage(popupImgSelector);
+        popupImage.open(item);
         popupImage.setEventListeners();
     });
     const cardElement = card.generateCard();
