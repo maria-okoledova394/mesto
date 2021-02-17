@@ -16,6 +16,8 @@ import {
     popupEditSelector,
     popupAddSelector,
     popupImgSelector,
+    nameInput,
+    jobInput
 } from '../utils/constants.js';
 
 const popupImage = new PopupWithImage(popupImgSelector);
@@ -57,12 +59,10 @@ const popupAdd = new popupWithForm(popupAddSelector, (item) => {
 popupAdd.setEventListeners();
 
 openButtonEdit.addEventListener('click', function () {
-    const nameInput = document.querySelector('.popup__input_content_name');
-    const jobInput = document.querySelector('.popup__input_content_job');
     nameInput.value = user.getUserInfo().nameValue;
     jobInput.value = user.getUserInfo().descriptionValue;
 
-    var event = new Event('input', {});
+    const event = new Event('input', {});
     nameInput.dispatchEvent(event);
     jobInput.dispatchEvent(event);
 
