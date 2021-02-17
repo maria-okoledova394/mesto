@@ -16,7 +16,6 @@ import {
     popupEditSelector,
     popupAddSelector,
     popupImgSelector,
-    saveButtonAdd,
 } from '../utils/constants.js';
 
 const cardList = new Section({
@@ -75,26 +74,7 @@ openButtonEdit.addEventListener('click', function () {
 
 openButtonAdd.addEventListener('click', function () {
     popupAdd.open();
-}); 
-
-function setPopupEventListener() {
-    const popupFuncEdit = document.querySelector(popupEditSelector);
-    const popupFuncAdd = document.querySelector(popupAddSelector);
-
-    popupFuncEdit.addEventListener('click', (event) => {
-        if (event.target.classList.contains('popup')) { // to ignore clicks on popup content
-            popupEdit.close();
-        }
-    });
-
-    popupFuncAdd.addEventListener('click', (event) => {
-        if (event.target.classList.contains('popup')) { // to ignore clicks on popup content
-            popupAdd.close();
-        }
-    })
-};
-
-setPopupEventListener();
+});
 
 const formList = Array.from(document.querySelectorAll('.popup__form'));
 formList.forEach((form) => {

@@ -24,5 +24,11 @@ export default class Popup {
 
     setEventListeners() {
       this._closeButton.addEventListener('click', this.close.bind(this));
+
+      this._popup.addEventListener('click', (event) => {
+        if (event.target.classList.contains('popup')) { // to ignore clicks on popup content
+          this.close();
+        }
+      })
     }
 }
