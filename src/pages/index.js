@@ -74,8 +74,6 @@ openButtonEdit.addEventListener('click', function () {
 });
 
 openButtonAdd.addEventListener('click', function () {
-    saveButtonAdd.disabled = true;
-    saveButtonAdd.classList.add(enableValidationData.inactiveButtonClass);
     popupAdd.open();
 }); 
 
