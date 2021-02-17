@@ -20,15 +20,20 @@ import {
 
 const popupImage = new PopupWithImage(popupImgSelector);
 
+function createCard(item) {
+    const card = new Card(item, templateSelector, () => {
+        popupImage.open(item);
+        popupImage.setEventListeners();
+    });
+    const cardElement = card.generateCard();
+
+    return cardElement;
+}
+
 const cardList = new Section({
     items: initialCards,
     renderer: (item) => {
-        const card = new Card(item, templateSelector, () => {
-            popupImage.open(item);
-            popupImage.setEventListeners();
-        });
-        const cardElement = card.generateCard();
-        cardList.addItem(cardElement);
+        cardList.addItem(createCard(item));
     }
 }, '.card-list');
 
@@ -44,15 +49,7 @@ const popupEdit = new popupWithForm(popupEditSelector, (formData) => {
 popupEdit.setEventListeners();
 
 const popupAdd = new popupWithForm(popupAddSelector, (item) => {
-
-    const card = new Card(item, templateSelector, () => { 
-        popupImage.open(item);
-        popupImage.setEventListeners();
-    });
-    const cardElement = card.generateCard();
-
-    
-    cardList.addItem(cardElement);
+    cardList.addItem(createCard(item));
 
     popupAdd.close();
 });
