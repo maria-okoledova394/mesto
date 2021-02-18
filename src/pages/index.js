@@ -21,11 +21,11 @@ import {
 } from '../utils/constants.js';
 
 const popupImage = new PopupWithImage(popupImgSelector);
+popupImage.setEventListeners();
 
 function createCard(item) {
     const card = new Card(item, templateSelector, () => {
-        popupImage.open(item);
-        popupImage.setEventListeners();
+        popupImage.open(item); 
     });
     const cardElement = card.generateCard();
 
