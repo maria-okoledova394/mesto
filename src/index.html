@@ -17,7 +17,11 @@
       <main>
 
         <section class="profile">
-          <img class="profile__avatar" src="<%=require('./images/avatar.jpeg')%>" alt="Фотография Жак-Ив Кусто">
+          <div class="profile__avatar-container">
+            <img class="profile__avatar" src="<%=require('./images/avatar.jpeg')%>" alt="Фотография Жак-Ив Кусто">
+            <i class="profile__icon"></i>          
+          </div>
+          
           <div class="profile__info">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
             <p class="profile__subtitle">Исследователь океана</p>
@@ -33,7 +37,10 @@
             <img class="elements__image" alt="#" src="#">
             <div class="elements__info">
               <h2 class="elements__title"></h2>
-              <button class="elements__like-button elements__like-button_status_notactive" type="button"></button>
+              <div class="elements__like-container">
+                <button class="elements__like-button elements__like-button_status_notactive" type="button"></button>
+                <p class="elements__like-count">8</p>
+              </div>
               <button class="elements__delete-button" type="button"></button>
             </div>
           </div>
@@ -75,6 +82,14 @@
           </div>
           <button class="popup__button popup__button-save popup__button-save_function_add popup__button_disabled" type="submit" disabled>Сохранить</button>
         </form>
+      </div>
+
+      <div class="popup popup_function_delete">
+        <div class="popup__container popup__container_function_delete" novalidate>
+          <button class="popup__close-button " type="button"></button>
+          <h2 class="popup__title popup__title_function_delete">Вы уверены?</h2>
+          <button class="popup__button popup__button-save popup__button-save_function_add popup__button_disabled" type="submit" disabled>Да</button>
+        </div>
       </div>
 
       <div class="popup popup_function_open-image">

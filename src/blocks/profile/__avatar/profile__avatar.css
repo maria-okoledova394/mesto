@@ -4,3 +4,29 @@
     width: 120px;
     height: 120px;
 }
+
+.profile__avatar:hover {
+    opacity: 0.6;
+}
+
+.profile__avatar:hover .profile__icon {
+    opacity: 1;
+  }
+  
+
+.profile__icon {
+    background-image: url(../../../images/edit-avatar-button.svg);
+    height: 26px;
+    width: 26px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+    opacity: 0;
+}
+  
+  .profile__icon:hover {
+    opacity: 0.6;
+  }
