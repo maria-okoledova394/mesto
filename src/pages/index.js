@@ -40,7 +40,7 @@ api
   //Отрисовка карточек
   .then((data) => {
     console.log(data);
-    const newData = data.map(item=>{
+    const newData = data.map(item => {
         return {name: item.name, link: item.link, _id: item._id}
     })
     console.log(newData);
@@ -49,6 +49,8 @@ api
   .catch(err => {
       console.log(err);
   })
+
+
 
 const popupImage = new PopupWithImage(popupImgSelector);
 popupImage.setEventListeners();
@@ -72,8 +74,8 @@ const popupEdit = new popupWithForm(popupEditSelector, (formData) => {
 popupEdit.setEventListeners();
 
 const popupAdd = new popupWithForm(popupAddSelector, (item) => {
+    api.addCard({name: item.name, link: item.link});
     cardList.addItem(createCard(item));
-
     popupAdd.close();
 });
 

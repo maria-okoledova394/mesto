@@ -27,18 +27,9 @@ export default class Api{
       .then(onResult)
     }
 }
+
   
-  
-    /*addTask(data) {
-      return fetch(this._url, {
-        method: "POST",
-        headers: this._headers,
-        body: JSON.stringify(data)
-      })
-      .then(onError)
-    }
-  
-  
+  /*
     removeTask(id) {
       return fetch(`${this._url}${id}`, {
         method: "DELETE",
