@@ -3,11 +3,12 @@
 //import { imagePopup, imageInImagePopup, descriptionImagePopup } from '../pages/index.js';
 
 export default class Card {
-    constructor({ name, link }, cardSelector, handleCardClick) {
-        this._name = name;
-        this._link = link;
+    constructor({ data, handleCardClick, handleDeleteIconClick }, cardSelector) {
+        this._name = data.name;
+        this._link = data.link;
         this._cardSelector = cardSelector;
         this._handleCardClick = handleCardClick;
+        this._handleDeleteIconClick = handleDeleteIconClick;
     }
 
    /* _getTemplate() {
@@ -77,6 +78,7 @@ export default class Card {
 
         deleteButton.addEventListener('click', () => {
             this._deleteCard();
+            this._handleDeleteIconClick();
         }); 
     }
 }

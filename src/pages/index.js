@@ -17,9 +17,11 @@ import {
     popupEditSelector,
     popupAddSelector,
     popupImgSelector,
+    popupDeleteSelector,
     nameInput,
     jobInput
 } from '../utils/constants.js';
+import PopupDeleteCard from '../components/popupDeleteCard';
 
 const cardList = new Section({
     renderer: (item) => {
@@ -55,12 +57,27 @@ api
 const popupImage = new PopupWithImage(popupImgSelector);
 popupImage.setEventListeners();
 
-function createCard(item) {
-    const card = new Card(item, templateSelector, () => {
-        popupImage.open(item); 
-    });
-    const cardElement = card.generateCard();
+const PopupDelete = new PopupDeleteCard(popupDeleteSelector, () => {
+    api.removeCard(item._id);
+})
 
+PopupDelete.setEventListeners();
+
+function createCard(item) {
+    const card = new Card(
+        {
+            data: item, 
+            handleCardClick: () => {
+                popupImage.open(item); 
+            },
+            handleDeleteIconClick: () => {
+                api.removeCard(item._id);
+            }
+        },
+        templateSelector
+    );
+
+    const cardElement = card.generateCard();
     return cardElement;
 }
 

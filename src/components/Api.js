@@ -26,14 +26,12 @@ export default class Api{
       })
       .then(onResult)
     }
-}
 
-  
-  /*
-    removeTask(id) {
-      return fetch(`${this._url}${id}`, {
+    removeCard(_id) {
+      return fetch(`${this._url}cards/${_id}`, {
         method: "DELETE",
         headers: this._headers,
       })
-      .then(onError)
-    }  */
+      .then(onResult)
+    }  
+}

@@ -40,5 +40,6 @@ export const templateSelector = '.elements';
 export const popupEditSelector = '.popup_function_edit';
 export const popupAddSelector = '.popup_function_add';
 export const popupImgSelector = '.popup_function_open-image';
+export const popupDeleteSelector = '.popup_function_delete';
 export const nameInput = document.querySelector('.popup__input_content_name');
 export const jobInput = document.querySelector('.popup__input_content_job');
