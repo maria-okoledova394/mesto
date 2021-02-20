@@ -101,7 +101,7 @@ api
   .then((data) => {
     console.log(data);
     const cardData = data.map(item => {
-        return {name: item.name, link: item.link, _id: item._id}
+        return {name: item.name, link: item.link, likes: item.likes, _id: item._id}
     })
     console.log(cardData);
     cardList.renderItems(cardData);
