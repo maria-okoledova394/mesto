@@ -1,3 +1,7 @@
+.popup__button-save_function_edit {
+    margin-top: 48px;
+}
+
 @media screen and (max-width: 677px) {
     .popup__button-save_function_edit {
         width: 238px;

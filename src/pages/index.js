@@ -9,7 +9,6 @@ import popupWithForm from '../components/PopupWithForm.js';
 import Api from '../components/Api.js';
 
 import {
-    initialCards,
     enableValidationData,
     openButtonEdit,
     openButtonAdd,
@@ -57,11 +56,9 @@ api
 const popupImage = new PopupWithImage(popupImgSelector);
 popupImage.setEventListeners();
 
-const PopupDelete = new PopupDeleteCard(popupDeleteSelector, () => {
-    api.removeCard(item._id);
-})
 
-PopupDelete.setEventListeners();
+
+
 
 function createCard(item) {
     const card = new Card(
@@ -71,7 +68,11 @@ function createCard(item) {
                 popupImage.open(item); 
             },
             handleDeleteIconClick: () => {
-                api.removeCard(item._id);
+                const PopupDelete = new PopupDeleteCard(popupDeleteSelector, () => {
+                    api.removeCard(item._id);
+                })
+                PopupDelete.setEventListeners();
+                PopupDelete.open(item);
             }
         },
         templateSelector

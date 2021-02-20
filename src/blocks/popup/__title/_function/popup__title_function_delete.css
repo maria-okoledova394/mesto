@@ -1,9 +1,9 @@
-.popup__title_function_add {
-    margin-bottom: 24px;
+.popup__title_function_delete {
+    margin-bottom: 0;
 }
 
 @media screen and (max-width: 677px) {
-    .popup__title_function_add {
+    .popup__title_function_delete {
         width: 200px;
         margin-bottom: 16px;
         margin-top: 30px;
