@@ -41,4 +41,12 @@ export default class Api{
           headers: this._headers
         }).then(onResult)
     }
+
+    changeProfileInfo(data) {
+      return fetch(`${this._url}users/me`, {
+          method: "PATCH",
+          headers: this._headers,
+          body: JSON.stringify(data)
+        }).then(onResult)
+    }
 }

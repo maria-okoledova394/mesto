@@ -98,6 +98,7 @@ const user = new UserInfo({ nameSelector: '.profile__title', descriptionSelector
 
 const popupEdit = new popupWithForm(popupEditSelector, (formData) => {
     user.setUserInfo(formData);
+    api.changeProfileInfo({ name: formData.name, about: formData.job });
     popupEdit.close();
 });
 
