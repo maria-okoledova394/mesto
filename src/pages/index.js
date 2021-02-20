@@ -13,18 +13,19 @@ import {
     enableValidationData,
     openButtonEdit,
     openButtonAdd,
+    openButtonUpdateAvatar,
     templateSelector,
     popupEditSelector,
     popupAddSelector,
     popupImgSelector,
     popupDeleteSelector,
+    popupUpdateAvatarSlector,
     nameInput,
     jobInput,
     profileTitle,
     profileSubtitle,
     profileAvatar
 } from '../utils/constants.js';
-
 
 const cardList = new Section(
     {
@@ -35,11 +36,35 @@ const cardList = new Section(
     '.card-list'
 );
 
+const user = new UserInfo({ nameSelector: '.profile__title', descriptionSelector: '.profile__subtitle' });
+
 const popupImage = new PopupWithImage(popupImgSelector);
-popupImage.setEventListeners();
 
 const PopupDelete = new PopupDeleteCard(popupDeleteSelector);
+
+const popupUpdateAvatar = new popupWithForm(popupUpdateAvatarSlector, (formData) => {
+    profileAvatar.src = formData.avatar;
+    api.updateAvatar({avatar: formData.avatar});
+    popupUpdateAvatar.close();
+});
+
+const popupEdit = new popupWithForm(popupEditSelector, (formData) => {
+    user.setUserInfo(formData);
+    api.changeProfileInfo({ name: formData.name, about: formData.job });
+    popupEdit.close();
+});
+
+const popupAdd = new popupWithForm(popupAddSelector, (item) => {
+    api.addCard({name: item.name, link: item.link});
+    cardList.addItem(createCard(item));
+    popupAdd.close();
+});
+
 PopupDelete.setEventListeners();
+popupImage.setEventListeners();
+popupEdit.setEventListeners();
+popupAdd.setEventListeners();
+popupUpdateAvatar.setEventListeners();
 
 const api = new Api({
     url: "https://mesto.nomoreparties.co/v1/cohort-20/",
@@ -48,32 +73,6 @@ const api = new Api({
       "Authorization": "d9c7d5d0-8d7b-4c75-89cd-3f307d29d79f"
     }
 })
-
-api
-  .getInitialCards()
-  //Отрисовка карточек
-  .then((data) => {
-    console.log(data);
-    const cardData = data.map(item => {
-        return {name: item.name, link: item.link, _id: item._id}
-    })
-    console.log(cardData);
-    cardList.renderItems(cardData);
-  })
-  .catch(err => {
-      console.log(err);
-  })
-
-api
-  .getProfileInfo()
-  .then((data) => {
-    profileTitle.textContent = data.name;
-    profileSubtitle.textContent = data.about;
-    profileAvatar.src = data.avatar;
-  })
-  .catch(err => {
-      console.log(err);
-  })
 
 function createCard(item) {
     const card = new Card(
@@ -92,28 +91,36 @@ function createCard(item) {
         },
         templateSelector
     );
-
     const cardElement = card.generateCard();
     return cardElement;
 }
 
-const user = new UserInfo({ nameSelector: '.profile__title', descriptionSelector: '.profile__subtitle' });
+//Отрисовка карточек
+api
+  .getInitialCards()
+  .then((data) => {
+    console.log(data);
+    const cardData = data.map(item => {
+        return {name: item.name, link: item.link, _id: item._id}
+    })
+    console.log(cardData);
+    cardList.renderItems(cardData);
+  })
+  .catch(err => {
+      console.log(err);
+  })
 
-const popupEdit = new popupWithForm(popupEditSelector, (formData) => {
-    user.setUserInfo(formData);
-    api.changeProfileInfo({ name: formData.name, about: formData.job });
-    popupEdit.close();
-});
-
-popupEdit.setEventListeners();
-
-const popupAdd = new popupWithForm(popupAddSelector, (item) => {
-    api.addCard({name: item.name, link: item.link});
-    cardList.addItem(createCard(item));
-    popupAdd.close();
-});
-
-popupAdd.setEventListeners();
+//Заполнение профиля
+api
+  .getProfileInfo()
+  .then((data) => {
+    profileTitle.textContent = data.name;
+    profileSubtitle.textContent = data.about;
+    profileAvatar.src = data.avatar;
+  })
+  .catch(err => {
+      console.log(err);
+  })
 
 openButtonEdit.addEventListener('click', function () {
     nameInput.value = user.getUserInfo().nameValue;
@@ -128,6 +135,10 @@ openButtonEdit.addEventListener('click', function () {
 
 openButtonAdd.addEventListener('click', function () {
     popupAdd.open();
+});
+
+openButtonUpdateAvatar.addEventListener('click', function () {
+    popupUpdateAvatar.open();
 });
 
 const formList = Array.from(document.querySelectorAll('.popup__form'));

@@ -36,11 +36,13 @@ export const enableValidationData = {
 
 export const openButtonEdit = document.querySelector('.profile__edit-button');
 export const openButtonAdd = document.querySelector('.profile__add-button');
+export const openButtonUpdateAvatar = document.querySelector('.profile__update-avatar-button');
 export const templateSelector = '.elements';
 export const popupEditSelector = '.popup_function_edit';
 export const popupAddSelector = '.popup_function_add';
 export const popupImgSelector = '.popup_function_open-image';
 export const popupDeleteSelector = '.popup_function_delete';
+export const popupUpdateAvatarSlector = '.popup_function_update-avatar';
 export const nameInput = document.querySelector('.popup__input_content_name');
 export const jobInput = document.querySelector('.popup__input_content_job');
 export const profileTitle = document.querySelector('.profile__title');

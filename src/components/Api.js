@@ -49,4 +49,12 @@ export default class Api{
           body: JSON.stringify(data)
         }).then(onResult)
     }
+
+    updateAvatar(data) {
+      return fetch(`${this._url}users/me/avatar`, {
+          method: "PATCH",
+          headers: this._headers,
+          body: JSON.stringify(data)
+        }).then(onResult)
+    }
 }

@@ -1,3 +1,6 @@
 .profile__avatar-container {
     position: relative;
+    border: none;
+    outline: none;
+    background-color: transparent;
 }
