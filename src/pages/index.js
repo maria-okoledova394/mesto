@@ -18,7 +18,10 @@ import {
     popupImgSelector,
     popupDeleteSelector,
     nameInput,
-    jobInput
+    jobInput,
+    profileTitle,
+    profileSubtitle,
+    profileAvatar
 } from '../utils/constants.js';
 import PopupDeleteCard from '../components/popupDeleteCard';
 
@@ -41,17 +44,26 @@ api
   //Отрисовка карточек
   .then((data) => {
     console.log(data);
-    const newData = data.map(item => {
+    const cardData = data.map(item => {
         return {name: item.name, link: item.link, _id: item._id}
     })
-    console.log(newData);
-    cardList.renderItems(newData);
+    console.log(cardData);
+    cardList.renderItems(cardData);
   })
   .catch(err => {
       console.log(err);
   })
 
-
+api
+  .getProfileInfo()
+  .then((data) => {
+    profileTitle.textContent = data.name;
+    profileSubtitle.textContent = data.about;
+    profileAvatar.src = data.avatar;
+  })
+  .catch(err => {
+      console.log(err);
+  })
 
 const popupImage = new PopupWithImage(popupImgSelector);
 popupImage.setEventListeners();

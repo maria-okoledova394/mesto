@@ -33,5 +33,12 @@ export default class Api{
         headers: this._headers,
       })
       .then(onResult)
-    }  
+    }
+
+    getProfileInfo() {
+      return fetch(`${this._url}users/me`, {
+          method: "GET",
+          headers: this._headers
+        }).then(onResult)
+    }
 }
