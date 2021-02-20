@@ -6,6 +6,7 @@ import Section from '../components/Section.js';
 import UserInfo from '../components/UserInfo.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import popupWithForm from '../components/PopupWithForm.js';
+import PopupDeleteCard from '../components/popupDeleteCard';
 import Api from '../components/Api.js';
 
 import {
@@ -23,13 +24,22 @@ import {
     profileSubtitle,
     profileAvatar
 } from '../utils/constants.js';
-import PopupDeleteCard from '../components/popupDeleteCard';
 
-const cardList = new Section({
-    renderer: (item) => {
-        cardList.addItem(createCard(item));
-    }},
-    '.card-list');
+
+const cardList = new Section(
+    {
+        renderer: (item) => {
+            cardList.addItem(createCard(item));
+        }
+    },
+    '.card-list'
+);
+
+const popupImage = new PopupWithImage(popupImgSelector);
+popupImage.setEventListeners();
+
+const PopupDelete = new PopupDeleteCard(popupDeleteSelector);
+PopupDelete.setEventListeners();
 
 const api = new Api({
     url: "https://mesto.nomoreparties.co/v1/cohort-20/",
@@ -65,13 +75,6 @@ api
       console.log(err);
   })
 
-const popupImage = new PopupWithImage(popupImgSelector);
-popupImage.setEventListeners();
-
-
-
-
-
 function createCard(item) {
     const card = new Card(
         {
@@ -80,11 +83,11 @@ function createCard(item) {
                 popupImage.open(item); 
             },
             handleDeleteIconClick: () => {
-                const PopupDelete = new PopupDeleteCard(popupDeleteSelector, () => {
-                    api.removeCard(item._id);
-                })
-                PopupDelete.setEventListeners();
                 PopupDelete.open(item);
+                PopupDelete.setHandleSubmitForm(() => {
+                    api.removeCard(item._id);
+                    card.deleteCard();
+                });
             }
         },
         templateSelector

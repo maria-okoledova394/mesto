@@ -54,7 +54,7 @@ export default class Card {
         hidePopup(imagePopup);
     }*/
 
-    _deleteCard() {
+    deleteCard() {
         this._element.remove();
     }
     
@@ -77,8 +77,8 @@ export default class Card {
         });
 
         deleteButton.addEventListener('click', () => {
-            this._deleteCard();
             this._handleDeleteIconClick();
+            //this._deleteCard();
         }); 
     }
 }
