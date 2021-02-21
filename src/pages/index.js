@@ -93,9 +93,12 @@ function createCard(item) {
                     card.deleteCard();
                 });
             },
-            /*handleLikeClick: () => {
-                api.likeCard(item._id);
-            }*/
+            handleLikeClick: () => {
+                api.likeCard(item._id)
+                .then((data) => {
+                    card.updateLikes(data.likes.length);
+                })
+            }
         },
         templateSelector
     );

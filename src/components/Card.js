@@ -1,5 +1,5 @@
 export default class Card {
-    constructor({ data, handleCardClick, handleDeleteIconClick/*, handleLikeClick*/ }, cardSelector) {
+    constructor({ data, handleCardClick, handleDeleteIconClick, handleLikeClick }, cardSelector) {
         this._name = data.name;
         this._link = data.link;
         this._cardSelector = cardSelector;
@@ -8,7 +8,7 @@ export default class Card {
         this._handleDeleteIconClick = handleDeleteIconClick;
         //todo: add owner
         //todo: add me???
-        //this._handleLikeClick = handleLikeClick;
+        this._handleLikeClick = handleLikeClick;
     }
 
     _getTemplate() {
@@ -29,10 +29,11 @@ export default class Card {
       this._image.src = this._link;
       this._image.alt = this._name;
       this._element.querySelector('.elements__title').textContent = this._name;
-      
+
       this._likes = this._element.querySelector('.elements__like-count');
       this._likes.textContent = this._likeCount;
-  
+
+      
       return this._element;
     }
 
@@ -40,11 +41,13 @@ export default class Card {
         this._element.remove();
     }
 
-
+    updateLikes(newLikesCount) {
+        this._likes.textContent = newLikesCount;
+    }
     
     _setEventListeners() {
-        const likeButton = this._element.querySelector('.elements__like-button');
         const deleteButton = this._element.querySelector('.elements__delete-button');
+        const likeButton = this._element.querySelector('.elements__like-button');
 
         this._element.addEventListener('click', (evt) => {
             if (
@@ -57,13 +60,12 @@ export default class Card {
         });
 
         likeButton.addEventListener('click', () => {
-            //this._handleLikeClick();
+            this._handleLikeClick();
             likeButton.classList.toggle('elements__like-button_status_active');
         });
 
         deleteButton.addEventListener('click', () => {
             this._handleDeleteIconClick();
-
         }); 
     }
 }
