@@ -5,8 +5,8 @@ import FormValidator from '../components/FormValidator.js';
 import Section from '../components/Section.js';
 import UserInfo from '../components/UserInfo.js';
 import PopupWithImage from '../components/PopupWithImage.js';
-import popupWithForm from '../components/PopupWithForm.js';
-import PopupDeleteCard from '../components/popupDeleteCard';
+import PopupWithForm from '../components/PopupWithForm.js';
+import PopupDeleteCard from '../components/PopupDeleteCard.js'; //ЭТО ЧТО
 import Api from '../components/Api.js';
 
 import {
@@ -54,8 +54,8 @@ Promise.all([api.getProfileInfo(), api.getInitialCards()])
                         popupImage.open(item); 
                     },
                     handleDeleteIconClick: () => {
-                        PopupDelete.open(item);
-                        PopupDelete.setHandleSubmitForm(() => {
+                        popupDelete.open(item);
+                        popupDelete.setHandleSubmitForm(() => {
                             api
                             .removeCard(item._id)
                             .then(() => {
@@ -116,9 +116,9 @@ Promise.all([api.getProfileInfo(), api.getInitialCards()])
 
         const popupImage = new PopupWithImage(popupImgSelector);
 
-        const PopupDelete = new PopupDeleteCard(popupDeleteSelector);
+        const popupDelete = new PopupDeleteCard(popupDeleteSelector);
 
-        const popupUpdateAvatar = new popupWithForm(popupUpdateAvatarSlector, (formData) => {
+        const popupUpdateAvatar = new PopupWithForm(popupUpdateAvatarSlector, (formData) => {
             popupUpdateAvatar.renderLoading(true);
             profileAvatar.src = formData.avatar;
             api
@@ -132,7 +132,7 @@ Promise.all([api.getProfileInfo(), api.getInitialCards()])
             })
         });
 
-        const popupEdit = new popupWithForm(popupEditSelector, (formData) => {
+        const popupEdit = new PopupWithForm(popupEditSelector, (formData) => {
             popupEdit.renderLoading(true);
             user.setUserInfo(formData);
             api
@@ -146,7 +146,7 @@ Promise.all([api.getProfileInfo(), api.getInitialCards()])
                 })
         });
 
-        const popupAdd = new popupWithForm(popupAddSelector, (item) => {
+        const popupAdd = new PopupWithForm(popupAddSelector, (item) => {
             popupAdd.renderLoading(true);
             api
                 .addCard({name: item.name, link: item.link})
@@ -162,11 +162,11 @@ Promise.all([api.getProfileInfo(), api.getInitialCards()])
                 })
         });
 
-        return [user, popupImage, PopupDelete, popupUpdateAvatar, popupEdit, popupAdd];
+        return [user, popupImage, popupDelete, popupUpdateAvatar, popupEdit, popupAdd];
     })
-    .then(([user, popupImage, PopupDelete, popupUpdateAvatar, popupEdit, popupAdd]) => {
+    .then(([user, popupImage, popupDelete, popupUpdateAvatar, popupEdit, popupAdd]) => {
         //Добавление обработиков
-        PopupDelete.setEventListeners();
+        popupDelete.setEventListeners();
         popupImage.setEventListeners();
         popupEdit.setEventListeners();
         popupAdd.setEventListeners();
