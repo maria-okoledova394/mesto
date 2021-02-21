@@ -109,24 +109,47 @@ Promise.all([api.getProfileInfo(), api.getInitialCards()])
         const PopupDelete = new PopupDeleteCard(popupDeleteSelector);
 
         const popupUpdateAvatar = new popupWithForm(popupUpdateAvatarSlector, (formData) => {
+            popupUpdateAvatar.renderLoading(true);
             profileAvatar.src = formData.avatar;
-            api.updateAvatar({avatar: formData.avatar});
-            popupUpdateAvatar.close();
+            api
+            .updateAvatar({avatar: formData.avatar})
+            .then(() => {
+                popupUpdateAvatar.close();
+                popupUpdateAvatar.renderLoading(false);
+            })
+            .catch(err => {
+                console.log(err);
+            })
         });
 
         const popupEdit = new popupWithForm(popupEditSelector, (formData) => {
+            popupEdit.renderLoading(true);
             user.setUserInfo(formData);
-            api.changeProfileInfo({ name: formData.name, about: formData.job });
-            popupEdit.close();
+            api
+                .changeProfileInfo({ name: formData.name, about: formData.job })
+                .then(() => {
+                    popupEdit.close();
+                    popupEdit.renderLoading(false);
+                })
+                .catch(err => {
+                    console.log(err);
+                })
         });
 
         const popupAdd = new popupWithForm(popupAddSelector, (item) => {
+            popupAdd.renderLoading(true);
             api
                 .addCard({name: item.name, link: item.link})
                 .then((cardData) => {
                     cardList.addItem(createCard(cardData));
                 })
-            popupAdd.close();
+                .then(() => {
+                    popupAdd.close();
+                    popupAdd.renderLoading(false);
+                })
+                .catch(err => {
+                    console.log(err);
+                })
         });
 
         return [user, popupImage, PopupDelete, popupUpdateAvatar, popupEdit, popupAdd];
