@@ -1,9 +1,9 @@
-.popup__button-save_function_delete {
-    margin-top: 38px;
+.popup__button-save_function_update-avatar {
+    margin-top: 48px;
 }
 
 @media screen and (max-width: 677px) {
-    .popup__button-save_function_delete {
+    .popup__button-save_function_update-avatar {
         width: 200px;
         height: 40px;
         margin-top: 36px;

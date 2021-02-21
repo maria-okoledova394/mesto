@@ -1,0 +1,11 @@
+.popup__title_function_update-avatar {
+    margin-bottom: 24px;
+}
+
+@media screen and (max-width: 677px) {
+    .popup__title_function_update-avatar {
+        width: 200px;
+        margin-bottom: 16px;
+        margin-top: 30px;
+    }
+}

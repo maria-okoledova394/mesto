@@ -1,7 +1,3 @@
-//import { hidePopup, showPopup } from '../utils/utils.js';
-
-//import { imagePopup, imageInImagePopup, descriptionImagePopup } from '../pages/index.js';
-
 export default class Card {
     constructor({ data, handleCardClick, handleDeleteIconClick/*, handleLikeClick*/ }, cardSelector) {
         this._name = data.name;
@@ -12,16 +8,6 @@ export default class Card {
         this._handleDeleteIconClick = handleDeleteIconClick;
         //this._handleLikeClick = handleLikeClick;
     }
-
-   /* _getTemplate() {
-        const cardElement = document
-          .querySelector(this._cardSelector)
-          .content
-          .querySelector('.elements__element')
-          .cloneNode(true);
-    
-        return cardElement;
-    }*/
 
     _getTemplate() {
         const cardElement = document
@@ -44,17 +30,6 @@ export default class Card {
   
       return this._element;
     }
-
-    /*_handleOpenPopup() {
-        showPopup(imagePopup);
-        imageInImagePopup.src = this._link;
-        imageInImagePopup.alt = this._image.alt;
-        descriptionImagePopup.textContent = this._name;
-    }*/
-    
-    /*_handleClosePopup() {
-        hidePopup(imagePopup);
-    }*/
 
     deleteCard() {
         this._element.remove();
@@ -83,7 +58,6 @@ export default class Card {
 
         deleteButton.addEventListener('click', () => {
             this._handleDeleteIconClick();
-            //this._deleteCard();
         }); 
     }
 }

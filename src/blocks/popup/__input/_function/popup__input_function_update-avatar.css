@@ -1,0 +1,7 @@
+@media screen and (max-width: 677px) {
+    .popup__input_function_update-avatar {
+        width: 200px;
+        font-size: 12px;
+        margin-top: 30px;
+    }
+}

@@ -39,11 +39,13 @@
 @import url(../blocks/popup/_function/popup_function_edit.css);
 @import url(../blocks/popup/_function/popup_function_open-image.css);
 @import url(../blocks/popup/_function/popup_function_delete.css);
+@import url(../blocks/popup/_function/popup_function_update-avatar.css);
 @import url(../blocks/popup/__container/popup__container.css);
 @import url(../blocks/popup/__container/_function/popup__container_function_add.css);
 @import url(../blocks/popup/__container/_function/popup__container_function_edit.css);
 @import url(../blocks/popup/__container/_function/popup__container_function_open-image.css);
 @import url(../blocks/popup/__container/_function/popup__container_function_delete.css);
+@import url(../blocks/popup/__container/_function/popup__container_function_update-avatar.css);
 @import url(../blocks/popup/__container/_type/popup__container_type_form.css);
 @import url(../blocks/popup/__container/_type/popup__container_type_image.css);
 @import url(../blocks/popup/__close-button/popup__close-button.css);
@@ -51,13 +53,16 @@
 @import url(../blocks/popup/__title/_function/popup__title_function_add.css);
 @import url(../blocks/popup/__title/_function/popup__title_function_edit.css);
 @import url(../blocks/popup/__title/_function/popup__title_function_delete.css);
+@import url(../blocks/popup/__title/_function/popup__title_function_update-avatar.css);
 @import url(../blocks/popup/__input/popup__input.css);
 @import url(../blocks/popup/__input/_function/popup__input_function_add.css);
 @import url(../blocks/popup/__input/_function/popup__input_function_edit.css);
+@import url(../blocks/popup/__input/_function/popup__input_function_update-avatar.css);
 @import url(../blocks/popup/__button-save/popup__button-save.css);
 @import url(../blocks/popup/__button-save/_function/popup__button-save_function_add.css);
 @import url(../blocks/popup/__button-save/_function/popup__button-save_function_edit.css);
 @import url(../blocks/popup/__button-save/_function/popup__button-save_function_delete.css);
+@import url(../blocks/popup/__button-save/_function/popup__button-save_function_update-avatar.css);
 @import url(../blocks/popup/__image/popup__image.css);
 @import url(../blocks/popup/__subscription/popup__subscription.css);
 
