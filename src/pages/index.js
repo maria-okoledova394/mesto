@@ -6,7 +6,7 @@ import Section from '../components/Section.js';
 import UserInfo from '../components/UserInfo.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
-import PopupDeleteCard from '../components/PopupDeleteCard.js'; //ЭТО ЧТО
+import PopupDeleteCard from '../components/PopupDeleteCard.js';
 import Api from '../components/Api.js';
 
 import {
@@ -21,10 +21,10 @@ import {
     popupDeleteSelector,
     popupUpdateAvatarSlector,
     nameInput,
-    jobInput,
-    profileTitle,
-    profileSubtitle,
-    profileAvatar
+    aboutInput,
+    nameSelector,
+    descriptionSelector,
+    avatarSelector
 } from '../utils/constants.js';
 
 const api = new Api({
@@ -36,12 +36,11 @@ const api = new Api({
 })
 
 Promise.all([api.getProfileInfo(), api.getInitialCards()])
-    .then(([userInfo, cards])=>{
+    .then(([userInfo, cards]) => {
 
         //Заполнение профиля
-        profileTitle.textContent = userInfo.name;
-        profileSubtitle.textContent = userInfo.about;
-        profileAvatar.src = userInfo.avatar;
+        const user = new UserInfo({ nameSelector: nameSelector, descriptionSelector: descriptionSelector, avatarSelector: avatarSelector });
+        user.setUserInfo(userInfo);
 
         const myID = userInfo._id;
 
@@ -112,7 +111,6 @@ Promise.all([api.getProfileInfo(), api.getInitialCards()])
         cardList.renderItems(cardData);
 
         //Создание экземпляров классов
-        const user = new UserInfo({ nameSelector: '.profile__title', descriptionSelector: '.profile__subtitle' });
 
         const popupImage = new PopupWithImage(popupImgSelector);
 
@@ -120,10 +118,10 @@ Promise.all([api.getProfileInfo(), api.getInitialCards()])
 
         const popupUpdateAvatar = new PopupWithForm(popupUpdateAvatarSlector, (formData) => {
             popupUpdateAvatar.renderLoading(true);
-            profileAvatar.src = formData.avatar;
             api
             .updateAvatar({avatar: formData.avatar})
-            .then(() => {
+            .then((res) => {
+                user.setUserInfo(res);
                 popupUpdateAvatar.close();
                 popupUpdateAvatar.renderLoading(false);
             })
@@ -134,10 +132,10 @@ Promise.all([api.getProfileInfo(), api.getInitialCards()])
 
         const popupEdit = new PopupWithForm(popupEditSelector, (formData) => {
             popupEdit.renderLoading(true);
-            user.setUserInfo(formData);
             api
-                .changeProfileInfo({ name: formData.name, about: formData.job })
-                .then(() => {
+                .changeProfileInfo({ name: formData.name, about: formData.about })
+                .then((res) => {
+                    user.setUserInfo(res);
                     popupEdit.close();
                     popupEdit.renderLoading(false);
                 })
@@ -174,11 +172,11 @@ Promise.all([api.getProfileInfo(), api.getInitialCards()])
 
         openButtonEdit.addEventListener('click', function () {
             nameInput.value = user.getUserInfo().nameValue;
-            jobInput.value = user.getUserInfo().descriptionValue;
+            aboutInput.value = user.getUserInfo().descriptionValue;
         
             const event = new Event('input', {});
             nameInput.dispatchEvent(event);
-            jobInput.dispatchEvent(event);
+            aboutInput.dispatchEvent(event);
         
             popupEdit.open();
         });
