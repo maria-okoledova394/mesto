@@ -38,8 +38,14 @@ const api = new Api({
 Promise.all([api.getProfileInfo(), api.getInitialCards()])
     .then(([userInfo, cards])=>{
 
+        //Заполнение профиля
+        profileTitle.textContent = userInfo.name;
+        profileSubtitle.textContent = userInfo.about;
+        profileAvatar.src = userInfo.avatar;
+
         const myID = userInfo._id;
-        
+
+        //Для отрисовки карточек
         function createCard(item) {
             const card = new Card(
                 {
@@ -79,7 +85,7 @@ Promise.all([api.getProfileInfo(), api.getInitialCards()])
             const cardElement = card.generateCard();
             return cardElement;
         }
-
+        
         const cardList = new Section(
             {
                 renderer: (item) => {
@@ -89,6 +95,13 @@ Promise.all([api.getProfileInfo(), api.getInitialCards()])
             '.card-list'
         );
 
+        //Отрисовка карточек
+        const cardData = cards.map(item => {
+            return {name: item.name, link: item.link, likes: item.likes, _id: item._id, owner: item.owner}
+        })
+        cardList.renderItems(cardData);
+
+        //Создание экземпляров классов
         const user = new UserInfo({ nameSelector: '.profile__title', descriptionSelector: '.profile__subtitle' });
 
         const popupImage = new PopupWithImage(popupImgSelector);
@@ -116,25 +129,15 @@ Promise.all([api.getProfileInfo(), api.getInitialCards()])
             popupAdd.close();
         });
 
+        return [user, popupImage, PopupDelete, popupUpdateAvatar, popupEdit, popupAdd];
+    })
+    .then(([user, popupImage, PopupDelete, popupUpdateAvatar, popupEdit, popupAdd]) => {
         //Добавление обработиков
         PopupDelete.setEventListeners();
         popupImage.setEventListeners();
         popupEdit.setEventListeners();
         popupAdd.setEventListeners();
         popupUpdateAvatar.setEventListeners();
-
-        //Заполнение профиля
-        profileTitle.textContent = userInfo.name;
-        profileSubtitle.textContent = userInfo.about;
-        profileAvatar.src = userInfo.avatar;
-
-        //Отрисовка карточек
-        const cardData = cards.map(item => {
-            return {name: item.name, link: item.link, likes: item.likes, _id: item._id, owner: item.owner}
-        })
-
-        console.log(cardData);
-        cardList.renderItems(cardData);
 
         openButtonEdit.addEventListener('click', function () {
             nameInput.value = user.getUserInfo().nameValue;
@@ -155,12 +158,13 @@ Promise.all([api.getProfileInfo(), api.getInitialCards()])
             popupUpdateAvatar.open();
         });
     })
+    .finally(() => {
+        const formList = Array.from(document.querySelectorAll('.popup__form'));
+        formList.forEach((form) => {
+            const formValid = new FormValidator(enableValidationData, form);
+            formValid.enableValidation();
+        })
+    })
     .catch(err => {
         console.log(err);
     })
-
-const formList = Array.from(document.querySelectorAll('.popup__form'));
-formList.forEach((form) => {
-    const formValid = new FormValidator(enableValidationData, form);
-    formValid.enableValidation();
-})
