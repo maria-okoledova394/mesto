@@ -56,25 +56,35 @@ Promise.all([api.getProfileInfo(), api.getInitialCards()])
                     handleDeleteIconClick: () => {
                         PopupDelete.open(item);
                         PopupDelete.setHandleSubmitForm(() => {
-                            api.removeCard(item._id);
-                            card.deleteCard();
+                            api
+                            .removeCard(item._id)
+                            .then(() => {
+                                card.deleteCard();
+                            })
+                            .catch(err => {
+                                console.log(err);
+                            })
                         });
                     },
                     handleLikeClick: () => {                        
                         if (card.likes.some((item) => {
                             return item._id === myID;
                         })) {                
-                            console.log('remove like');
                             api.removeLike(item._id)
                             .then((data) => {
                                 card.updateLikes(data.likes);                                
                             })
+                            .catch(err => {
+                                console.log(err);
+                            })
                         }
                         else {
-                            console.log('set like')
                             api.likeCard(item._id)
                             .then((data) => {
                                 card.updateLikes(data.likes);
+                            })
+                            .catch(err => {
+                                console.log(err);
                             })
                         }                        
                     }
