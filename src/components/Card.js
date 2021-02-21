@@ -3,7 +3,7 @@ export default class Card {
         this._name = data.name;
         this._link = data.link;
         this._cardSelector = cardSelector;
-        this._likeCount = data.likes.length;
+        this.likes = data.likes;
         this._handleCardClick = handleCardClick;
         this._handleDeleteIconClick = handleDeleteIconClick;
         //todo: add owner
@@ -30,8 +30,8 @@ export default class Card {
       this._image.alt = this._name;
       this._element.querySelector('.elements__title').textContent = this._name;
 
-      this._likes = this._element.querySelector('.elements__like-count');
-      this._likes.textContent = this._likeCount;
+      this._likesElement = this._element.querySelector('.elements__like-count');
+      this._likesElement.textContent = this.likes.length;
 
       
       return this._element;
@@ -41,8 +41,9 @@ export default class Card {
         this._element.remove();
     }
 
-    updateLikes(newLikesCount) {
-        this._likes.textContent = newLikesCount;
+    updateLikes(newLikes) {
+        this.likes = newLikes;
+        this._likesElement.textContent = newLikes.length;
     }
     
     _setEventListeners() {
