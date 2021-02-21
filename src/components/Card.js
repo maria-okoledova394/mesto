@@ -3,9 +3,11 @@ export default class Card {
         this._name = data.name;
         this._link = data.link;
         this._cardSelector = cardSelector;
-        //this._likeCount = data.likes.length;
+        this._likeCount = data.likes.length;
         this._handleCardClick = handleCardClick;
         this._handleDeleteIconClick = handleDeleteIconClick;
+        //todo: add owner
+        //todo: add me???
         //this._handleLikeClick = handleLikeClick;
     }
 
@@ -27,6 +29,9 @@ export default class Card {
       this._image.src = this._link;
       this._image.alt = this._name;
       this._element.querySelector('.elements__title').textContent = this._name;
+      
+      this._likes = this._element.querySelector('.elements__like-count');
+      this._likes.textContent = this._likeCount;
   
       return this._element;
     }
@@ -58,6 +63,7 @@ export default class Card {
 
         deleteButton.addEventListener('click', () => {
             this._handleDeleteIconClick();
+
         }); 
     }
 }

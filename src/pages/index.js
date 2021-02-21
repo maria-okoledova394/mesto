@@ -56,8 +56,11 @@ const popupEdit = new popupWithForm(popupEditSelector, (formData) => {
 });
 
 const popupAdd = new popupWithForm(popupAddSelector, (item) => {
-    api.addCard({name: item.name, link: item.link});
-    cardList.addItem(createCard(item));
+    api
+        .addCard({name: item.name, link: item.link})
+        .then((cardData) => {
+            cardList.addItem(createCard(cardData));
+        })
     popupAdd.close();
 });
 
