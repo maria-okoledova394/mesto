@@ -36,6 +36,7 @@ const cardList = new Section(
     '.card-list'
 );
 
+//Создание экземпляров классов
 const user = new UserInfo({ nameSelector: '.profile__title', descriptionSelector: '.profile__subtitle' });
 
 const popupImage = new PopupWithImage(popupImgSelector);
@@ -60,6 +61,7 @@ const popupAdd = new popupWithForm(popupAddSelector, (item) => {
     popupAdd.close();
 });
 
+//Добавление обработиков
 PopupDelete.setEventListeners();
 popupImage.setEventListeners();
 popupEdit.setEventListeners();
@@ -87,7 +89,10 @@ function createCard(item) {
                     api.removeCard(item._id);
                     card.deleteCard();
                 });
-            }
+            },
+            /*handleLikeClick: () => {
+                api.likeCard(item._id);
+            }*/
         },
         templateSelector
     );
@@ -95,32 +100,25 @@ function createCard(item) {
     return cardElement;
 }
 
-//Отрисовка карточек
-api
-  .getInitialCards()
-  .then((data) => {
-    console.log(data);
-    const cardData = data.map(item => {
-        return {name: item.name, link: item.link, likes: item.likes, _id: item._id}
-    })
-    console.log(cardData);
-    cardList.renderItems(cardData);
-  })
-  .catch(err => {
-      console.log(err);
-  })
+Promise.all([api.getProfileInfo(), api.getInitialCards()])
+    .then(([userInfo, cards])=>{
 
-//Заполнение профиля
-api
-  .getProfileInfo()
-  .then((data) => {
-    profileTitle.textContent = data.name;
-    profileSubtitle.textContent = data.about;
-    profileAvatar.src = data.avatar;
-  })
-  .catch(err => {
-      console.log(err);
-  })
+        //Заполнение профиля
+        profileTitle.textContent = userInfo.name;
+        profileSubtitle.textContent = userInfo.about;
+        profileAvatar.src = userInfo.avatar;
+
+        //Отрисовка карточек
+        const cardData = cards.map(item => {
+            return {name: item.name, link: item.link, likes: item.likes, _id: item._id}
+        })
+
+        console.log(cardData);
+        cardList.renderItems(cardData);
+    })
+    .catch(err => {
+        console.log(err);
+    })
 
 openButtonEdit.addEventListener('click', function () {
     nameInput.value = user.getUserInfo().nameValue;

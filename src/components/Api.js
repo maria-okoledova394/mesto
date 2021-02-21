@@ -57,4 +57,12 @@ export default class Api{
           body: JSON.stringify(data)
         }).then(onResult)
     }
+
+    likeCard(_id) {
+      return fetch(`${this._url}cards/likes/${_id}`, {
+        method: "PUT",
+        headers: this._headers,
+      })
+      .then(onResult)
+    }
 }
